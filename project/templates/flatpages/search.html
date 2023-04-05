@@ -1,34 +1,37 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 {% load static %}
 {% load my_tags %}
 {% load my_filters %}
 {% block title %}
-Поиск публикаций
+{% trans "Поиск публикаций" %}
 {% endblock title %}
 
 {% block content %}
-<h1><font color="red">NEWS(NW) & ARTICLES(AR)</h1></font>
-<h1>Поиск публикаций</h1>
+<h1><font color="red">NEWS(NW) & ARTICLES(AR)</font></h1>
+<h1>{% trans "Поиск публикаций" %}</h1>
 <h6><i>{% current_time '%d %b %Y' %}</i></h6>
-<h6><i>Количество публикаций на текущей странице:{{ search|length }}</i></h6>
-<h6><i>Всего публикаций:{{ paginator.count }}</i></h6>
+<h6><i>{% trans "Количество публикаций на текущей странице:" %} {{ search|length }}</i></h6>
+<h6><i>{% trans "Всего публикаций:" %} {{ paginator.count }}</i></h6>
 <h3> {{ next_post|default_if_none:"На данный момент, новостей больше нет" }} </h3>
-  <form action="" method="get">
-      {{ filterset.form.non_field_errors }}
-       {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
-   </form>
+<form action="" method="get">
+    {{ filterset.form.non_field_errors }}
+    {{ filterset.form.as_p }}
+    <input type="submit" value="{% trans "Найти" %}">
+</form>
+<form action="" method="get">>
+</form>
 
 <hr>
 {% if search %}
        <table>
            <tr>
-               <td><b>Заголовок</b></td>
-               <td><b>Текст</b></td>
-               <td><b>Дата публикации</b></td>
-               <td><b>Категория публикации</b></td>
+               <td><b>{% trans "Заголовок" %}</b></td>
+               <td><b>{% trans "Текст" %}</b></td>
+               <td><b>{% trans "Дата публикации" %}</b></td>
+               <td><b>{% trans "Категория публикации" %}</b></td>
                {% if perms.newsandart.change_post or perms.newsandart.delete_post %}
-                <td><b>Действия</b></td>
+                <td><b>{% trans "Действия" %}</b></td>
                {% endif %}
            </tr>
 
@@ -41,10 +44,10 @@
 
                <td>
                     {% if perms.newsandart.change_post %}
-                    <a href="{% url 'post_edit' pk=post.id %}">Редактировать</a>
+                    <a href="{% url 'post_edit' pk=post.id %}">{% trans "Редактировать" %}</a>
                     {% endif %}
                     {% if perms.newsandart.delete_post %}
-                    <a href="{% url 'post_delete' post.id %}">Удалить</a>
+                    <a href="{% url 'post_delete' post.id %}">{% trans "Удалить" %}</a>
                     {% endif %}
                </td>
 
@@ -54,11 +57,11 @@
 
        </table>
    {% else %}
-       <h2>Новостей нет!</h2>
+       <h2>{% trans "Новостей нет!" %}</h2>
    {% endif %}
 
 {% if page_obj.has_previous %}
-       <a href="?page=1">Начало</a>
+       <a href="?page=1">{% trans "Начало" %}</a>
        {% if page_obj.previous_page_number != 1 %}
            ...
            <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>

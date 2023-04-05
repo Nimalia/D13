@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -6,6 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>SkillFactory NEWs</title>
+        <style>
+        body {background-color: {% if current_time.hour >= 17 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};}
+    </style>
 
         {% load static %}
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
@@ -27,33 +31,33 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/">allNEWs&ARTs</a>
+                            <a class="nav-link" href="/news/">{% trans "ВСЕ НОВОСТИ И СТАТЬИ" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/search">SEARCH(Поиск)</a>
+                            <a class="nav-link" href="/news/search">{% trans "ПОИСК" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/create">Create(Создание публикации)</a>
+                            <a class="nav-link" href="/news/create">{% trans "Создание публикации" %}</a>
                          <li class="nav-item">
                           <li class="nav-item">
-                            <a class="nav-link" href="/news/categories/1">Подписка SPORT</a>
+                            <a class="nav-link" href="/news/categories/1">{% trans "Подписка СПОРТ" %}</a>
                          <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/categories/2">Подписка CULTURE</a>
+                            <a class="nav-link" href="/news/categories/2">{% trans "Подписка КУЛЬТУРА" %}</a>
                          <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/categories/3">Подписка CITY</a>
+                            <a class="nav-link" href="/news/categories/3">{% trans "Подписка ГОРОД" %}</a>
                          <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/categories/4">Подписка MOVIE</a>
+                            <a class="nav-link" href="/news/categories/4">{% trans "Подписка КИНО" %}</a>
                          <li class="nav-item">
 
                             {% if request.user.is_authenticated %}
                            <font color = "#cc0000">user:{{ request.user.username }}</font>
-                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/logout/'>Выход</a>
+                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/logout/'>{% trans "Выход" %}</a>
                             {% else %}
-                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/login'>Вход</a>
-                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/signup'>Регистрация</a>
+                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/login'>{% trans "Вход" %}</a>
+                                <a class="nav-link" href='http://127.0.0.1:8003/accounts/signup'>{% trans "Регистрация" %}</a>
                             {% endif %}
                          </li>
 

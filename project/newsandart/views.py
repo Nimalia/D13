@@ -4,7 +4,8 @@ from django.views import View
 from .tasks import send_message
 from datetime import datetime
 from django.urls import reverse_lazy
-from django.core.cache import cache
+from django.utils.translation import gettext as _
+
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import PostFilter
 from .forms import PostForm
@@ -12,9 +13,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Post
-import logging
 
-logger = logging.getLogger(__name__)
 
 class PostList(ListView):
     model = Post
@@ -35,16 +34,6 @@ class PostList(ListView):
         context['filterset'] = self.filterset
         return context
 
-    # def get_object(self, *args, **kwargs):
-    #     obj = cache.get(f'post-{self.kwargs["pk"]}', None)
-    #     print('cache.get obj', obj)
-    #     if not obj:
-    #         obj = super().get_object(queryset=self.queryset)
-    #         cache.set(f'post-{self.kwargs["pk"]}', obj)
-    #         # print(pk)
-    #         print('if not obj', obj)
-    #     return obj
-
 
 class PostDetail(DetailView):
     model = Post
@@ -55,15 +44,6 @@ class PostDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()
         return context
-
-    def get_object(self, *args, **kwargs):
-        obj = cache.get(f'post-{self.kwargs["pk"]}', None)
-        print('cache.get obj', obj)
-        if not obj:
-            obj = super().get_object(queryset=self.queryset)
-            cache.set(f'post-{self.kwargs["pk"]}', obj)
-            print('if not obj', obj)
-        return obj
 
 
 class PostSearchList(ListView):
@@ -154,7 +134,7 @@ class CategoryListView(ListView):
 @login_required
 def subscribe(request, pk):
     user = request.user
-    category = Categorys.objects.get(id=pk)
+    category = Category.objects.get(id=pk)
     category.subscribers.add(user)
 
     message = "Вы успешно подписались на рассылку новостей данной категории"

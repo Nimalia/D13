@@ -169,8 +169,63 @@ class Post(models.Model):
         cache.delete(f'news-{self.pk}')
 ````
 
+## ~~Don't use print~~ 
+## LOGGING
 
+Add to ``` settings.py: ```
 
+````
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'baseform': {
+            'format': '{asctime} {levelname} {message}',
+            'style': '{',
+        },
+        ...
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    ...
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'baseform',
+       ....
+        'security': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'security.log',
+            'formatter': 'generalseclogform',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false']
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'errorlogform2'
+        },
+         
+    },
+    ....
+    
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'consoleWar', 'consoleEC', 'general'],
+
+        },
+        ....
+}
+
+ADMINS = [('name', 'name@host.com')]
+````
 ---
 
 So it's the main functionality of my project at the moment. 

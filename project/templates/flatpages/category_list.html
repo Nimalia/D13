@@ -1,24 +1,25 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 {% load static %}
 {% load my_tags %}
 {% load my_filters %}
 {% block title %}
-NEWS & ARTICLES (Новости и статьи)
+NEWS & ARTICLES ({% trans "Новости и статьи" %})
 {% endblock title %}
 
 {% block content %}
 <h1><font color="red">NEWS(NW) & ARTICLES(AR)</font></h1>
-<h1>Новости и статьи</h1>
-<h1>категории: {{ category }}</h1>
+<h1>{% trans "Новости и статьи" %}</h1>
+<h1>{% trans "категории:" %} {{ category }}</h1>
 
 
 
 <hr>
 
 {% if is_not_subscriber %}
-    <a href="{% url 'subscribe' category.id %}"><button name="action" value="subscribe">Подписаться</button></a>
+    <a href="{% url 'subscribe' category.id %}"><button name="action" value="subscribe">{% trans "Подписаться" %}</button></a>
 {% else %}
-    <a href="{% url 'unsubscribe' category.id %}"><button name="action" value="unsubscribe">Отписаться</button></a>
+    <a href="{% url 'unsubscribe' category.id %}"><button name="action" value="unsubscribe">{% trans "Отписаться" %}</button></a>
 {% endif %}
 
 
@@ -26,11 +27,11 @@ NEWS & ARTICLES (Новости и статьи)
 
        <table>
            <tr>
-               <td><b>Заголовок</b></td>
-               <td><b>Текст</b></td>
-               <td><b>Дата публикации</b></td>
-               <td><b>Вид публикации</b></td>
-               <td><b>Категория публикации</b></td>
+               <td><b>{% trans "Заголовок" %}</b></td>
+               <td><b>{% trans "Текст" %}</b></td>
+               <td><b>{% trans "Дата публикации" %}</b></td>
+               <td><b>{% trans "Вид публикации" %}</b></td>
+               <td><b>{% trans "Категория публикации" %}</b></td>
            </tr>
 
               {% for post in category_news_list %}
@@ -51,12 +52,12 @@ NEWS & ARTICLES (Новости и статьи)
 
        </table>
    {% else %}
-       <h2>Новостей нет!</h2>
+       <h2>{% trans "Новостей нет!" %}</h2>
    {% endif %}
 
 
 {% if page_obj.has_previous %}
-       <a href="?page=1">Начало</a>
+       <a href="?page=1">{% trans "Начало" %}</a>
        {% if page_obj.previous_page_number != 1 %}
            ...
            <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>

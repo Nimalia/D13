@@ -1,34 +1,66 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 {% load static %}
 {% load my_tags %}
 {% load my_filters %}
 {% block title %}
-NEWS & ARTICLES (Новости и статьи)
+NEWS & ARTICLES ({% trans "Новости и статьи" %})
 {% endblock title %}
 
 {% block content %}
 <h1><font color="red">NEWS(NW) & ARTICLES(AR)</font></h1>
-<h1>Новости и статьи</h1>
+<h1>{% trans "Новости и статьи" %}</h1>
 <h6><i>{% current_time '%d %b %Y' %}</i></h6>
-<h6><i>Количество публикаций на текущей странице:{{ news|length }}</i></h6>
-<h6><i>Всего публикаций:{{ paginator.count }}</i></h6>
+<h6><i>{% trans "Количество публикаций на текущей странице:" %} {{ news|length }}</i></h6>
+<h6><i>{% trans "Всего публикаций:" %} {{ paginator.count }}</i></h6>
 <h3> {{ next_post|default_if_none:"На данный момент, новостей больше нет" }} </h3>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page title</title>
+</head>
+<body>
+    <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
+        <input type="hidden" name="next" value="{{ redirect_to }}">
+        {% get_current_language as LANGUAGE_CODE %}
+
+        <select name="language" id="">
+            {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+            {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+
+            {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                    {{ language.name_local }} - {{ language.code }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go!">
+    </form>
+
+</body>
+</html>
+
+
+
 
 <hr>
 
 {% if perms.newsandart.add_post %}
-<a href="{% url 'post_create' %}">Создать публикацию</a>
+<a href="{% url 'post_create' %}">{% trans "Cоздать публикацию" %}</a>
 {% endif %}
 
 {% if news %}
        <table>
            <tr>
-               <td><b>Заголовок</b></td>
-               <td><b>Текст</b></td>
-               <td><b>Дата публикации</b></td>
-               <td><b>Категория публикации</b></td>
+               <td><b>{% trans "Заголовок" %}</b></td>
+               <td><b>{% trans "Текст" %}</b></td>
+               <td><b>{% trans "Дата публикации" %}</b></td>
+               <td><b>{% trans "Категория публикации" %}</b></td>
                {% if perms.newsandart.change_post or perms.newsandart.delete_post %}
-                <td><b>Действия</b></td>
+                <td><b>{% trans "Действия" %}</b></td>
                 {% endif %}
 
            </tr>
@@ -42,10 +74,10 @@ NEWS & ARTICLES (Новости и статьи)
 
                 <td>
                     {% if perms.newsandart.change_post %}
-                    <a href="{% url 'post_edit' pk=post.id %}">Редактировать</a>
+                    <a href="{% url 'post_edit' pk=post.id %}">{% trans "Редактировать" %}</a>
                     {% endif %}
                     {% if perms.newsandart.delete_post %}
-                    <a href="{% url 'post_delete' post.id %}">Удалить</a>
+                    <a href="{% url 'post_delete' post.id %}">{% trans "Удалить" %}</a>
                     {% endif %}
                 </td>
 
@@ -55,11 +87,11 @@ NEWS & ARTICLES (Новости и статьи)
 
        </table>
    {% else %}
-       <h2>Новостей нет!</h2>
+       <h2>{% trans "Новостей нет!" %}</h2>
    {% endif %}
 
 {% if page_obj.has_previous %}
-       <a href="?page=1">Начало</a>
+       <a href="?page=1">{% trans "Начало" %}</a>
        {% if page_obj.previous_page_number != 1 %}
            ...
            <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>

@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-03 06:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/account/email/base_message.txt:1
+msgid "Добрый день!Это NewsPortal=)"
+msgstr "Hello!This is NewsPortal=)"
+
+#: templates/account/email/base_message.txt:5
+msgid ""
+"Спасибо, что с нами!Ваш NewsPortal!\n"
+"http://127.0.0.1:8003/news"
+msgstr "Thanks for watching!Yours NewsPortal!"
+
+#: templates/account/email/email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"Вы получили это сообщение, потому что пользователь %(user_display)s указал "
+"этот email при регистрации на сайте http://127.0.0.1:8003/news.\n"
+"\n"
+"Для подтверждения регистрации пройдите по ссылке %(activate_url)s\n"
+"\n"
+"Хорошего дня!\n"
+msgstr ""
+
+#: templates/flatpages/category_list.html:7
+#: templates/flatpages/category_list.html:12 templates/flatpages/new.html:7
+#: templates/flatpages/news.html:7 templates/flatpages/news.html:12
+#: templates/flatpages/subscribe.html:4 templates/flatpages/unsubscribe.html:4
+#, fuzzy
+#| msgid "Новостей нет!"
+msgid "Новости и статьи"
+msgstr "No more news!"
+
+#: templates/flatpages/category_list.html:13
+msgid "категории:"
+msgstr "categories"
+
+#: templates/flatpages/category_list.html:20
+msgid "Подписаться"
+msgstr "Subscribe"
+
+#: templates/flatpages/category_list.html:22
+msgid "Отписаться"
+msgstr "Unsubscribe"
+
+#: templates/flatpages/category_list.html:30 templates/flatpages/new.html:17
+#: templates/flatpages/news.html:58 templates/flatpages/search.html:29
+msgid "Заголовок"
+msgstr "Title"
+
+#: templates/flatpages/category_list.html:31 templates/flatpages/new.html:18
+#: templates/flatpages/news.html:59 templates/flatpages/search.html:30
+msgid "Текст"
+msgstr "Text"
+
+#: templates/flatpages/category_list.html:32 templates/flatpages/new.html:19
+#: templates/flatpages/news.html:60 templates/flatpages/search.html:31
+msgid "Дата публикации"
+msgstr "Date"
+
+#: templates/flatpages/category_list.html:33
+msgid "Вид публикации"
+msgstr "Type"
+
+#: templates/flatpages/category_list.html:34 templates/flatpages/new.html:20
+#: templates/flatpages/news.html:61 templates/flatpages/search.html:32
+msgid "Категория публикации"
+msgstr "Category"
+
+#: templates/flatpages/category_list.html:55 templates/flatpages/news.html:90
+#: templates/flatpages/search.html:60
+msgid "Новостей нет!"
+msgstr "No more news!"
+
+#: templates/flatpages/category_list.html:60 templates/flatpages/news.html:94
+#: templates/flatpages/search.html:64
+msgid "Начало"
+msgstr "Start"
+
+#: templates/flatpages/create.html:5
+#, fuzzy
+#| msgid "Cоздать публикацию"
+msgid "Создайте свою публикацию"
+msgstr "Make post"
+
+#: templates/flatpages/create.html:6
+msgid "Заполните все поля"
+msgstr "Complete the form"
+
+#: templates/flatpages/default.html:31
+msgid "ВСЕ НОВОСТИ И СТАТЬИ"
+msgstr "ALL NEWS and ARTICLES"
+
+#: templates/flatpages/default.html:34
+msgid "ПОИСК"
+msgstr "SEARCH"
+
+#: templates/flatpages/default.html:37
+msgid "Создание публикации"
+msgstr "Make post"
+
+#: templates/flatpages/default.html:40
+msgid "Подписка СПОРТ"
+msgstr "Subs SPORT"
+
+#: templates/flatpages/default.html:43
+msgid "Подписка КУЛЬТУРА"
+msgstr "Subs CULTURE"
+
+#: templates/flatpages/default.html:46
+msgid "Подписка ГОРОД"
+msgstr "Subs CITY"
+
+#: templates/flatpages/default.html:49
+msgid "Подписка КИНО"
+msgstr "Subs MOVIE"
+
+#: templates/flatpages/default.html:54
+msgid "Выход"
+msgstr "Exit"
+
+#: templates/flatpages/default.html:56
+msgid "Вход"
+msgstr "Enter"
+
+#: templates/flatpages/default.html:57
+msgid "Регистрация"
+msgstr "Registration"
+
+#: templates/flatpages/delete.html:5
+msgid "Удаление публикации"
+msgstr "Delete post"
+
+#: templates/flatpages/delete.html:9
+msgid "Удаляем"
+msgstr "Delete"
+
+#: templates/flatpages/edit.html:5
+msgid "Редактирование публикации"
+msgstr "Edit post"
+
+#: templates/flatpages/new.html:12
+msgid "Публикация"
+msgstr "Post"
+
+#: templates/flatpages/new.html:22 templates/flatpages/news.html:63
+#: templates/flatpages/search.html:34
+msgid "Действия"
+msgstr "Action"
+
+#: templates/flatpages/new.html:34 templates/flatpages/news.html:77
+#: templates/flatpages/search.html:47
+msgid "Редактировать"
+msgstr "Edit"
+
+#: templates/flatpages/new.html:37 templates/flatpages/news.html:80
+#: templates/flatpages/search.html:50
+msgid "Удалить"
+msgstr "Delete"
+
+#: templates/flatpages/news.html:14 templates/flatpages/search.html:14
+msgid "Количество публикаций на текущей странице:"
+msgstr "Total posts on this page"
+
+#: templates/flatpages/news.html:15 templates/flatpages/search.html:15
+msgid "Всего публикаций:"
+msgstr "Total posts"
+
+#: templates/flatpages/news.html:52
+msgid "Cоздать публикацию"
+msgstr "Make post"
+
+#: templates/flatpages/search.html:7 templates/flatpages/search.html:12
+msgid "Поиск публикаций"
+msgstr "Search post"
+
+#: templates/flatpages/search.html:20
+msgid "Найти"
+msgstr "Search"

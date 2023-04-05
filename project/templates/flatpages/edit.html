@@ -1,8 +1,8 @@
 {% extends 'flatpages/default.html' %}
-
+{% load i18n %}
 {% block content %}
-<h1><font color="red">NEWS(NW) & ARTICLES(AR)</h1></font>
-<h1>Редактирование публикации</h1>
+<h1><font color="red">NEWS(NW) & ARTICLES(AR)</font></h1>
+<h1>{% trans "Редактирование публикации" %}</h1>
 <hr>
 <form action="" method="post">
     {% csrf_token %}
