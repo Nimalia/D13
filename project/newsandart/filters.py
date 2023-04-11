@@ -1,10 +1,11 @@
 from django_filters import FilterSet, DateTimeFilter, ModelChoiceFilter,CharFilter
 from django.forms import DateTimeInput
 from .models import Category
+from django.utils.translation import gettext_lazy as _
 
 class PostFilter(FilterSet):
 
-    title = CharFilter(field_name="title", label='Заголовок', lookup_expr="icontains")
+    title = CharFilter(field_name="title", label='Заголовок', lookup_expr="icontains",)
     postCategory = ModelChoiceFilter(field_name="postCategory", queryset=Category.objects.all(), label='Категория', lookup_expr="exact", empty_label="Выберите")
     datecalbefore = DateTimeFilter(field_name="dateCreation", lookup_expr="lt",
                                   label='Дата публикации до:',

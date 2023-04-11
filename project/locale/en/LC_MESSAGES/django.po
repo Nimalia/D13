@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-03 06:32+0000\n"
+"POT-Creation-Date: 2023-04-10 20:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: newsandart/filters.py:8 newsandart/models.py:58
+#: templates/flatpages/category_list.html:30 templates/flatpages/new.html:62
+#: templates/flatpages/news.html:69 templates/flatpages/search.html:53
+msgid "Заголовок"
+msgstr "Title"
+
+#: newsandart/models.py:52
+msgid "Новость"
+msgstr "News"
+
+#: newsandart/models.py:53
+msgid "Статья"
+msgstr "Article"
+
+#: newsandart/models.py:59 templates/flatpages/category_list.html:31
+#: templates/flatpages/new.html:63 templates/flatpages/news.html:70
+#: templates/flatpages/search.html:54
+msgid "Текст"
+msgstr "Text"
 
 #: templates/account/email/base_message.txt:1
 msgid "Добрый день!Это NewsPortal=)"
@@ -41,12 +61,10 @@ msgstr ""
 
 #: templates/flatpages/category_list.html:7
 #: templates/flatpages/category_list.html:12 templates/flatpages/new.html:7
-#: templates/flatpages/news.html:7 templates/flatpages/news.html:12
-#: templates/flatpages/subscribe.html:4 templates/flatpages/unsubscribe.html:4
-#, fuzzy
-#| msgid "Новостей нет!"
+#: templates/flatpages/news.html:13 templates/flatpages/subscribe.html:4
+#: templates/flatpages/unsubscribe.html:4
 msgid "Новости и статьи"
-msgstr "No more news!"
+msgstr "News and articles"
 
 #: templates/flatpages/category_list.html:13
 msgid "категории:"
@@ -60,18 +78,8 @@ msgstr "Subscribe"
 msgid "Отписаться"
 msgstr "Unsubscribe"
 
-#: templates/flatpages/category_list.html:30 templates/flatpages/new.html:17
-#: templates/flatpages/news.html:58 templates/flatpages/search.html:29
-msgid "Заголовок"
-msgstr "Title"
-
-#: templates/flatpages/category_list.html:31 templates/flatpages/new.html:18
-#: templates/flatpages/news.html:59 templates/flatpages/search.html:30
-msgid "Текст"
-msgstr "Text"
-
-#: templates/flatpages/category_list.html:32 templates/flatpages/new.html:19
-#: templates/flatpages/news.html:60 templates/flatpages/search.html:31
+#: templates/flatpages/category_list.html:32 templates/flatpages/new.html:64
+#: templates/flatpages/news.html:71 templates/flatpages/search.html:55
 msgid "Дата публикации"
 msgstr "Date"
 
@@ -79,24 +87,22 @@ msgstr "Date"
 msgid "Вид публикации"
 msgstr "Type"
 
-#: templates/flatpages/category_list.html:34 templates/flatpages/new.html:20
-#: templates/flatpages/news.html:61 templates/flatpages/search.html:32
+#: templates/flatpages/category_list.html:34 templates/flatpages/new.html:65
+#: templates/flatpages/news.html:72 templates/flatpages/search.html:56
 msgid "Категория публикации"
 msgstr "Category"
 
-#: templates/flatpages/category_list.html:55 templates/flatpages/news.html:90
-#: templates/flatpages/search.html:60
+#: templates/flatpages/category_list.html:55 templates/flatpages/news.html:101
+#: templates/flatpages/search.html:84
 msgid "Новостей нет!"
 msgstr "No more news!"
 
-#: templates/flatpages/category_list.html:60 templates/flatpages/news.html:94
-#: templates/flatpages/search.html:64
+#: templates/flatpages/category_list.html:60 templates/flatpages/news.html:105
+#: templates/flatpages/search.html:88
 msgid "Начало"
 msgstr "Start"
 
 #: templates/flatpages/create.html:5
-#, fuzzy
-#| msgid "Cоздать публикацию"
 msgid "Создайте свою публикацию"
 msgstr "Make post"
 
@@ -104,49 +110,49 @@ msgstr "Make post"
 msgid "Заполните все поля"
 msgstr "Complete the form"
 
-#: templates/flatpages/default.html:31
+#: templates/flatpages/default.html:35
 msgid "ВСЕ НОВОСТИ И СТАТЬИ"
 msgstr "ALL NEWS and ARTICLES"
 
-#: templates/flatpages/default.html:34
+#: templates/flatpages/default.html:38
 msgid "ПОИСК"
 msgstr "SEARCH"
 
-#: templates/flatpages/default.html:37
+#: templates/flatpages/default.html:41
 msgid "Создание публикации"
 msgstr "Make post"
 
-#: templates/flatpages/default.html:40
+#: templates/flatpages/default.html:44
 msgid "Подписка СПОРТ"
 msgstr "Subs SPORT"
 
-#: templates/flatpages/default.html:43
+#: templates/flatpages/default.html:47
 msgid "Подписка КУЛЬТУРА"
 msgstr "Subs CULTURE"
 
-#: templates/flatpages/default.html:46
+#: templates/flatpages/default.html:50
 msgid "Подписка ГОРОД"
 msgstr "Subs CITY"
 
-#: templates/flatpages/default.html:49
+#: templates/flatpages/default.html:53
 msgid "Подписка КИНО"
 msgstr "Subs MOVIE"
 
-#: templates/flatpages/default.html:54
+#: templates/flatpages/default.html:58
 msgid "Выход"
 msgstr "Exit"
 
-#: templates/flatpages/default.html:56
+#: templates/flatpages/default.html:60
 msgid "Вход"
 msgstr "Enter"
 
-#: templates/flatpages/default.html:57
+#: templates/flatpages/default.html:61
 msgid "Регистрация"
 msgstr "Registration"
 
 #: templates/flatpages/delete.html:5
 msgid "Удаление публикации"
-msgstr "Delete post"
+msgstr "Delete posts"
 
 #: templates/flatpages/delete.html:9
 msgid "Удаляем"
@@ -160,30 +166,42 @@ msgstr "Edit post"
 msgid "Публикация"
 msgstr "Post"
 
-#: templates/flatpages/new.html:22 templates/flatpages/news.html:63
-#: templates/flatpages/search.html:34
+#: templates/flatpages/new.html:67 templates/flatpages/news.html:74
+#: templates/flatpages/search.html:58
 msgid "Действия"
 msgstr "Action"
 
-#: templates/flatpages/new.html:34 templates/flatpages/news.html:77
-#: templates/flatpages/search.html:47
+#: templates/flatpages/new.html:79 templates/flatpages/news.html:88
+#: templates/flatpages/search.html:71
 msgid "Редактировать"
 msgstr "Edit"
 
-#: templates/flatpages/new.html:37 templates/flatpages/news.html:80
-#: templates/flatpages/search.html:50
+#: templates/flatpages/new.html:82 templates/flatpages/news.html:91
+#: templates/flatpages/search.html:74
 msgid "Удалить"
 msgstr "Delete"
 
-#: templates/flatpages/news.html:14 templates/flatpages/search.html:14
+#: templates/flatpages/news.html:8
+msgid "NEWS & ARTICLES (Новости и статьи)"
+msgstr "NEWS & ARTICLES"
+
+#: templates/flatpages/news.html:15 templates/flatpages/search.html:14
 msgid "Количество публикаций на текущей странице:"
 msgstr "Total posts on this page"
 
-#: templates/flatpages/news.html:15 templates/flatpages/search.html:15
+#: templates/flatpages/news.html:16 templates/flatpages/search.html:15
 msgid "Всего публикаций:"
 msgstr "Total posts"
 
-#: templates/flatpages/news.html:52
+#: templates/flatpages/news.html:36 templates/flatpages/news.html:47
+msgid "Да"
+msgstr "Yes"
+
+#: templates/flatpages/news.html:41
+msgid "Часовой пояс"
+msgstr "Time zone"
+
+#: templates/flatpages/news.html:63
 msgid "Cоздать публикацию"
 msgstr "Make post"
 

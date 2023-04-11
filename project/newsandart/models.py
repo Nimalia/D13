@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.core.validators import MinValueValidator
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -48,14 +49,14 @@ class Post(models.Model):
     NEWS = "NW"
     ARTICLE = "AR"
     CATEGORY_CHOICE = (
-        (NEWS, "Новость"),
-        (ARTICLE, "Статья"),
+        (NEWS, _('Новость')),
+        (ARTICLE, _('Статья')),
     )
     categoryType = models.CharField(max_length=8, choices=CATEGORY_CHOICE, default=ARTICLE)
     dateCreation = models.DateTimeField(auto_now_add=True)
     postCategory = models.ManyToManyField(Category, through="PostCategory")
-    title = models.CharField(max_length=128)
-    text = models.TextField()
+    title = models.CharField(max_length=128, verbose_name=_('Заголовок'))
+    text = models.TextField(verbose_name=_('Текст'))
     rating = models.SmallIntegerField(default=0)
 
 

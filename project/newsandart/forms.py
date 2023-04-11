@@ -1,6 +1,7 @@
 from django import forms
 # from django.core.exceptions import ValidationError
 from .models import Post, Category, Author
+from django.utils.translation import gettext_lazy as _
 
 
 class PostForm(forms.ModelForm):
@@ -13,6 +14,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'categoryType', 'text', "postCategory",]
+
 
     # def clean(self):
     #     cleaned_data = super().clean()

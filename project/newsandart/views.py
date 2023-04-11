@@ -1,10 +1,13 @@
+import pytz
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.http import HttpResponse
-from django.views import View
-from .tasks import send_message
 from datetime import datetime
-from django.urls import reverse_lazy
+from django.utils import timezone
+from django.shortcuts import redirect
 from django.utils.translation import gettext as _
+
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views import View
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import PostFilter
@@ -32,8 +35,13 @@ class PostList(ListView):
         context['time_now'] = datetime.utcnow()
         context['next post'] = None
         context['filterset'] = self.filterset
+        current_time = timezone.localtime(timezone.now())
+        context['current_time'] = current_time
         return context
 
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
 
 class PostDetail(DetailView):
     model = Post
@@ -70,6 +78,7 @@ class PostSearchDetail(DetailView):
     model = Post
     template_name = 'flatpages/search.html'
     context_object_name = "search"
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -149,14 +158,3 @@ def unsubscribe(request, pk):
     message = "Вы успешно  отписались от рассылки новостей данной категории"
     return render(request, "flatpages/unsubscribe.html", {"category": category, "message": message})
 
-# class NewPostView(View):
-#     def get(self, request):
-#         send_message.delay()
-#         return redirect("/")
-
-
-
-# class WeeklyPostsViews(View):
-#     def get(self, request):
-#         .delay()
-#         return redirect("/")

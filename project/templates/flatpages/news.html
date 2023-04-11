@@ -1,10 +1,11 @@
 {% extends 'flatpages/default.html' %}
 {% load i18n %}
+{% load tz %}
 {% load static %}
 {% load my_tags %}
 {% load my_filters %}
 {% block title %}
-NEWS & ARTICLES ({% trans "Новости и статьи" %})
+{% trans "NEWS & ARTICLES (Новости и статьи)" %}
 {% endblock title %}
 
 {% block content %}
@@ -16,12 +17,7 @@ NEWS & ARTICLES ({% trans "Новости и статьи" %})
 <h3> {{ next_post|default_if_none:"На данный момент, новостей больше нет" }} </h3>
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page title</title>
-</head>
+
 <body>
     <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
         <input type="hidden" name="next" value="{{ redirect_to }}">
@@ -37,13 +33,28 @@ NEWS & ARTICLES ({% trans "Новости и статьи" %})
                 </option>
             {% endfor %}
         </select>
-        <input type="submit" value="Go!">
+        <input type="submit" value="{% trans 'Да' %}">
     </form>
-
+{% get_current_timezone as TIME_ZONE %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="timezone">{% trans 'Часовой пояс' %}:</label>
+        <select name="timezone">
+            {% for tz in timezones %}
+            <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="{% trans 'Да' %}">
+    </form>
+    {{ TIME_ZONE }}
+    {{ current_time|timezone:TIME_ZONE }} <!-- Отображаем время в выбранном часовом поясе  -->
+    {% for model in models %}
+    <div class="model-class">
+        {{ model.name }}
+    </div>
+    {% endfor %}
 </body>
 </html>
-
-
 
 
 <hr>

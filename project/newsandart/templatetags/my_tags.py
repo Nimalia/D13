@@ -7,4 +7,4 @@ register = template.Library()
 
 @register.simple_tag()
 def current_time(format_string='%d %b %Y'):
-   return f"сегодня: {datetime.utcnow().strftime(format_string)}"
+   return f"📅 {datetime.utcnow().strftime(format_string)}"
